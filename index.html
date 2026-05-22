@@ -93,7 +93,8 @@
   .stats {
     flex: 1;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 36px;
     text-align: center;
   }
   .stat .num { font-size: 18px; font-weight: 700; display: block; }
@@ -132,10 +133,11 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 12px 8px;
+    padding: 14px 12px;
     border-radius: 14px;
     text-decoration: none;
     color: inherit;
+    border-bottom: 1px solid #f0f0f0;
     transition: background 0.18s ease, transform 0.12s ease;
   }
   .store:active { background: #f0f0f0; transform: scale(0.985); }
@@ -161,6 +163,15 @@
     font-weight: 700;
     font-size: 17px;
     color: #2a2a2a;
+  }
+  .store-ava img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    display: block;
+    background: #fff;
   }
   .store-info { flex: 1; min-width: 0; }
   .store-info .handle {
@@ -221,9 +232,6 @@
 
     <div class="profile">
       <div class="profile-top">
-        <div class="avatar-ring">
-          <div class="avatar">S</div>
-        </div>
         <div class="stats">
           <div class="stat"><span class="num">5</span><span class="lbl">店舗</span></div>
           <div class="stat"><span class="num">古着</span><span class="lbl">vintage</span></div>
@@ -242,7 +250,7 @@
     <div class="links">
 
       <a class="store" href="https://www.instagram.com/sui_vintage/" target="_blank" rel="noopener">
-        <div class="store-ava"><div class="inner">本</div></div>
+        <div class="store-ava"><img src="sui_honten.jpg" alt="sui 本店"></div>
         <div class="store-info">
           <div class="handle">@sui_vintage</div>
           <div class="shopname">sui 本店</div>
@@ -251,7 +259,7 @@
       </a>
 
       <a class="store" href="https://www.instagram.com/sui_chazawa_vintage/" target="_blank" rel="noopener">
-        <div class="store-ava"><div class="inner">茶</div></div>
+        <div class="store-ava"><img src="sui_chazawa.jpg" alt="sui 茶沢通り店"></div>
         <div class="store-info">
           <div class="handle">@sui_chazawa_vintage</div>
           <div class="shopname">sui 茶沢通り店</div>
@@ -260,7 +268,7 @@
       </a>
 
       <a class="store" href="https://www.instagram.com/sui_vintage_shimokitazawa/" target="_blank" rel="noopener">
-        <div class="store-ava"><div class="inner">下</div></div>
+        <div class="store-ava"><img src="sui_shimokita.jpg" alt="sui 下北沢店"></div>
         <div class="store-info">
           <div class="handle">@sui_vintage_shimokitazawa</div>
           <div class="shopname">sui 下北沢店</div>
@@ -269,7 +277,7 @@
       </a>
 
       <a class="store" href="https://www.instagram.com/sui_vintage_kanazawa/" target="_blank" rel="noopener">
-        <div class="store-ava"><div class="inner">金</div></div>
+        <div class="store-ava"><img src="sui_kanazawa.jpg" alt="sui 金沢店"></div>
         <div class="store-info">
           <div class="handle">@sui_vintage_kanazawa</div>
           <div class="shopname">sui 金沢店</div>
@@ -278,7 +286,7 @@
       </a>
 
       <a class="store" href="https://www.instagram.com/shara__vintage/" target="_blank" rel="noopener">
-        <div class="store-ava"><div class="inner">sh</div></div>
+        <div class="store-ava"><img src="shara.jpg" alt="shara"></div>
         <div class="store-info">
           <div class="handle">@shara__vintage</div>
           <div class="shopname">shara</div>
