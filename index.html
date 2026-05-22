@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sui / shara 公式Instagram一覧</title>
+<style>
+  :root {
+    --ig-bg: #fafafa;
+    --ig-text: #262626;
+    --ig-sub: #8e8e8e;
+    --ig-border: #dbdbdb;
+    --ig-blue: #0095f6;
+    --ig-grad-1: #feda75;
+    --ig-grad-2: #fa7e1e;
+    --ig-grad-3: #d62976;
+    --ig-grad-4: #962fbf;
+    --ig-grad-5: #4f5bd5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", "Helvetica Neue", Arial, sans-serif;
+    background: var(--ig-bg);
+    color: var(--ig-text);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    min-height: 100vh;
+  }
+
+  /* ===== Header bar ===== */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--ig-border);
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: saturate(180%) blur(8px);
+    z-index: 10;
+  }
+  .topbar .logo {
+    font-family: "Segoe Script", "Brush Script MT", cursive;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  /* ===== Profile section ===== */
+  .profile {
+    padding: 22px 18px 6px;
+  }
+  .profile-top {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .avatar-ring {
+    flex-shrink: 0;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(45deg, var(--ig-grad-1), var(--ig-grad-2), var(--ig-grad-3), var(--ig-grad-4), var(--ig-grad-5));
+  }
+  .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Times New Roman", serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #2a2a2a;
+    overflow: hidden;
+  }
+  .stats {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+  .stat .num { font-size: 18px; font-weight: 700; display: block; }
+  .stat .lbl { font-size: 13px; color: var(--ig-text); }
+
+  .bio {
+    padding: 12px 2px 0;
+  }
+  .bio .name { font-size: 14px; font-weight: 600; }
+  .bio .cat { font-size: 14px; color: var(--ig-sub); }
+  .bio .desc { font-size: 14px; margin-top: 2px; }
+  .bio .desc .tag { color: #00376b; }
+
+  /* ===== Section label ===== */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 22px 18px 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ig-sub);
+    letter-spacing: 0.5px;
+  }
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--ig-border);
+  }
+
+  /* ===== Store links ===== */
+  .links { padding: 6px 14px 30px; }
+
+  .store {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 8px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.18s ease, transform 0.12s ease;
+  }
+  .store:active { background: #f0f0f0; transform: scale(0.985); }
+
+  .store-ava {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    padding: 2.5px;
+    background: linear-gradient(45deg, var(--ig-grad-1), var(--ig-grad-2), var(--ig-grad-3), var(--ig-grad-4), var(--ig-grad-5));
+  }
+  .store-ava .inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #2a2a2a;
+  }
+  .store-info { flex: 1; min-width: 0; }
+  .store-info .handle {
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .store-info .shopname {
+    font-size: 13px;
+    color: var(--ig-sub);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .store-btn {
+    flex-shrink: 0;
+    background: var(--ig-blue);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 8px;
+  }
+
+  /* ===== Footer ===== */
+  .foot {
+    text-align: center;
+    font-size: 11px;
+    color: #b0b0b0;
+    padding: 8px 0 28px;
+    letter-spacing: 0.5px;
+  }
+
+  /* entrance animation */
+  .store {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: rise 0.45s ease forwards;
+  }
+  .store:nth-child(1) { animation-delay: 0.05s; }
+  .store:nth-child(2) { animation-delay: 0.12s; }
+  .store:nth-child(3) { animation-delay: 0.19s; }
+  .store:nth-child(4) { animation-delay: 0.26s; }
+  .store:nth-child(5) { animation-delay: 0.33s; }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <span class="logo">sui &amp; shara</span>
+    </div>
+
+    <div class="profile">
+      <div class="profile-top">
+        <div class="avatar-ring">
+          <div class="avatar">S</div>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="num">5</span><span class="lbl">店舗</span></div>
+          <div class="stat"><span class="num">古着</span><span class="lbl">vintage</span></div>
+          <div class="stat"><span class="num">東京</span><span class="lbl">/ 金沢</span></div>
+        </div>
+      </div>
+      <div class="bio">
+        <div class="name">sui / shara vintage</div>
+        <div class="cat">古着・ヴィンテージショップ</div>
+        <div class="desc">各店舗の公式Instagramはこちら ↓<br><span class="tag">#sui #shara #古着 #vintage</span></div>
+      </div>
+    </div>
+
+    <div class="section-label">店舗 INSTAGRAM</div>
+
+    <div class="links">
+
+      <a class="store" href="https://www.instagram.com/sui_vintage/" target="_blank" rel="noopener">
+        <div class="store-ava"><div class="inner">本</div></div>
+        <div class="store-info">
+          <div class="handle">@sui_vintage</div>
+          <div class="shopname">sui 本店</div>
+        </div>
+        <span class="store-btn">フォロー</span>
+      </a>
+
+      <a class="store" href="https://www.instagram.com/sui_chazawa_vintage/" target="_blank" rel="noopener">
+        <div class="store-ava"><div class="inner">茶</div></div>
+        <div class="store-info">
+          <div class="handle">@sui_chazawa_vintage</div>
+          <div class="shopname">sui 茶沢通り店</div>
+        </div>
+        <span class="store-btn">フォロー</span>
+      </a>
+
+      <a class="store" href="https://www.instagram.com/sui_vintage_shimokitazawa/" target="_blank" rel="noopener">
+        <div class="store-ava"><div class="inner">下</div></div>
+        <div class="store-info">
+          <div class="handle">@sui_vintage_shimokitazawa</div>
+          <div class="shopname">sui 下北沢店</div>
+        </div>
+        <span class="store-btn">フォロー</span>
+      </a>
+
+      <a class="store" href="https://www.instagram.com/sui_vintage_kanazawa/" target="_blank" rel="noopener">
+        <div class="store-ava"><div class="inner">金</div></div>
+        <div class="store-info">
+          <div class="handle">@sui_vintage_kanazawa</div>
+          <div class="shopname">sui 金沢店</div>
+        </div>
+        <span class="store-btn">フォロー</span>
+      </a>
+
+      <a class="store" href="https://www.instagram.com/shara__vintage/" target="_blank" rel="noopener">
+        <div class="store-ava"><div class="inner">sh</div></div>
+        <div class="store-info">
+          <div class="handle">@shara__vintage</div>
+          <div class="shopname">shara</div>
+        </div>
+        <span class="store-btn">フォロー</span>
+      </a>
+
+    </div>
+
+    <div class="foot">© sui &amp; shara vintage</div>
+
+  </div>
+</body>
+</html>
